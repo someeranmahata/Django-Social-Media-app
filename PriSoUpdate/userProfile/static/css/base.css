@@ -1,0 +1,313 @@
+/* ==========================================================================
+   Social Media App — global stylesheet
+   Matches the structure used in base.html and the account/dashboard templates
+   ========================================================================== */
+
+:root {
+  --color-primary: #2d6cdf;
+  --color-primary-dark: #1f4fad;
+  --color-text: #2b2b2b;
+  --color-text-light: #6b7280;
+  --color-bg: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-border: #e1e4e8;
+  --color-error-bg: #fdecea;
+  --color-error-text: #b3261e;
+  --header-height: 64px;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --font-main: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+  color: var(--color-text);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Header                                                                  */
+/* ---------------------------------------------------------------------- */
+
+#header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
+#header .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+}
+
+/* Nav menu */
+#header .menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
+  flex: 1;
+  margin-left: 2.5rem;
+}
+
+#header .menu li {
+  display: flex;
+}
+
+#header .menu li a {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+#header .menu li a:hover {
+  background: var(--color-bg);
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+#header .menu li.selected a {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+#header .menu li.selected a:hover {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+/* User section (greeting + logout / login link) */
+#header .user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  white-space: nowrap;
+}
+
+#header .user form {
+  margin: 0;
+  display: inline;
+}
+
+#header .user button[type="submit"] {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+#header .user button[type="submit"]:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Content area                                                           */
+/* ---------------------------------------------------------------------- */
+
+#content {
+  max-width: 720px;
+  margin: 2.5rem auto;
+  padding: 2rem 2.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+#content p {
+  color: var(--color-text);
+  margin: 0 0 1rem;
+}
+
+/* Error / info message blocks, e.g. failed login attempt */
+#content p:first-of-type:has(+ form) {
+  margin-bottom: 1.25rem;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Forms                                                                  */
+/* ---------------------------------------------------------------------- */
+
+form {
+  margin-top: 0.5rem;
+}
+
+/* Django's {{ form.as_p }} wraps each field in its own <p> */
+form p {
+  margin: 0 0 1.1rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="file"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(45, 108, 223, 0.15);
+  background: var(--color-surface);
+}
+
+form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Submit buttons */
+form input[type="submit"] {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+form input[type="submit"]:hover {
+  background: var(--color-primary-dark);
+}
+
+form input[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+/* Field-level error text that Django renders inside the as_p output */
+form ul.errorlist {
+  list-style: none;
+  margin: 0 0 0.4rem;
+  padding: 0;
+  color: var(--color-error-text);
+  font-size: 0.85rem;
+}
+
+/* Standalone error message paragraphs, e.g. "username and password didn't match" */
+#content > p:has(+ div.login-form),
+#content .errornote {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  border: 1px solid rgba(179, 38, 30, 0.25);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Login form wrapper                                                     */
+/* ---------------------------------------------------------------------- */
+
+.login-form {
+  margin-top: 1rem;
+}
+
+.login-form form {
+  margin-bottom: 1rem;
+}
+
+.login-form p {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.login-form p a {
+  color: var(--color-text-light);
+}
+
+.login-form p a:hover {
+  color: var(--color-primary);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive                                                             */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  #header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.75rem 1rem;
+    row-gap: 0.5rem;
+  }
+
+  #header .menu {
+    margin-left: 0;
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  #header .menu li a {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  #content {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
