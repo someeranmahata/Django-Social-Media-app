@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 def profile_view(request,username):
     profile=Profile.objects.get(
@@ -12,7 +13,7 @@ def profile_view(request,username):
     )
     return render(
         request,
-        'account/login.html',
+        'account/dashboard.html',
         {'profile':profile}             #CHANGED FROM profile.html->account/login.html
     )
 @login_required
@@ -33,6 +34,7 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+
             return redirect(
                 'profile',
                 username=request.user.username

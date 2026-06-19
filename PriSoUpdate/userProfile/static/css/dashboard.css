@@ -151,3 +151,25 @@
         position: static;
     }
 }
+
+.messages{
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.message{
+    background: #eef3ff;
+    color: #2d6cdf;
+    border: 1px solid #cddcff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.message.success{
+    background: #eaf8ee;
+    color: #1e7a34;
+    border-color: #b8e3c3;
+}

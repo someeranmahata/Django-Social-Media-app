@@ -7,6 +7,6 @@
     {{ user_form.as_p }}
     {{ profile_form.as_p }}
     {% csrf_token %}
-    <p><input type="submit" value="Save changes"></p>
+    <p><input type="submit" value="Save changes" onclick="alert('Profile updated succesfully')"></p>
   </form>
 {% endblock %}
