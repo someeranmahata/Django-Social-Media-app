@@ -1,8 +1,66 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Dashboard{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
 {% block content %}
-  <h1>Dashboard</h1>
-  <p>Welcome to your dashboard.
-     You can <a href="{% url "edit" %}">edit your profile</a> or <a href="{% url "password_change" %}">change your password</a>.
-  </p>
+<div class="dashboard-layout">
+
+    <!-- Left Sidebar -->
+    <div class="dashboard-card profile-option">
+        <div class="profile-header">
+            {% if profile.profile_pic %}
+              <img src="{{ profile.profile_pic.url }}" class="avatar" alt="Profile Photo">
+            {% else %}
+          <div class="avatar"></div>
+          {% endif %}
+
+            <div class="username">
+                {{ profile.user.username }}
+            </div>
+
+            <div class="user-bio">
+                Welcome to PriSoUpdates
+            </div>
+        </div>
+        <div class="profile-edit-option">
+          <p>You can <a href="{% url "edit" %}">edit your profile</a> or <a href="{% url "password_change" %}">change your password</a>.</p>
+        </div>
+    </div>
+
+    <!-- Main Feed -->
+    <div class="dashboard-card all-post">
+
+        <div class="section-title">
+            Recent Posts
+        </div>
+        {% for dat in posts %}
+          
+        <div class="post">
+            <p>{{dat}}</p>
+        </div>
+        {% endfor %}
+
+        <!-- Add as many posts as you want.
+             The center box automatically grows in height. -->
+
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="dashboard-card channels-list">
+
+        <div class="section-title">
+            Following
+        </div>
+
+        {% for channel in channels %}
+        <div class="channel">{{channel}}</div>
+        {% endfor %}
+
+    </div>
+
+</div>
 {% endblock %}

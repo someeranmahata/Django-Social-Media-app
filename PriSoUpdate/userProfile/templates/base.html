@@ -4,6 +4,8 @@
 <head>
   <title>{% block title %}{% endblock %}</title>
   <link href="{% static "css/base.css" %}" rel="stylesheet">
+{% block extra_css %}
+{% endblock %}
 </head>
 <body>
   <div id="header">
@@ -21,9 +23,12 @@
       {% endif %}
     </span>
   </div>
-  <div id="content">
-    {% block content %}
-    {% endblock %}
-  </div>
+
+  {% block page %}
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  {% endblock %}
 </body>
 </html>

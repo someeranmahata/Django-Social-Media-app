@@ -70,10 +70,19 @@ def user_login(request):
             return render(request, 'account/login.html', {'form': form})
 @login_required
 def dashboard(request):
+    profile = request.user.profile
+    posts=[f"post{i}" for i in range(1, 10)]
+
+    channels=[f"channel{i}" for i in range(1, 5)]
+    
     return render(
         request,
         'account/dashboard.html',
-        {'section': 'dashboard'}
+        {'section': 'dashboard',
+         'profile' : profile,
+         'posts' : posts,
+         'channels': channels
+         }
     )
 def register(request):
     if request.method == 'POST':

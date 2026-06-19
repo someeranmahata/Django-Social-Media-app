@@ -1,0 +1,153 @@
+/* Dashboard Layout */
+
+#content{
+    max-width: 100%;
+    margin: 0;
+    padding: 30px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.dashboard-layout{
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 30px;
+    align-items: start;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.dashboard-card{
+    background: #ffffff;
+    border-radius: 24px;
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 24px;
+}
+
+/* Left sidebar */
+
+.profile-option{
+    min-height: 450px;
+    position: sticky;
+    top: 90px;
+}
+
+.profile-option{
+    min-height: 450px;
+    position: sticky;
+    top: 90px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-edit-option{
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: #6b7280;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.profile-edit-option p{
+    margin: 0;
+}
+
+.profile-edit-option a{
+    color: #2d6cdf;
+    font-weight: 500;
+}
+/* Center feed */
+
+.all-post{
+    min-height: 500px;
+}
+
+/* Right sidebar */
+
+.channels-list{
+    min-height: 350px;
+    position: sticky;
+    top: 90px;
+}
+
+.section-title{
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2d6cdf;
+}
+
+.profile-header{
+    text-align: center;
+}
+
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #eef3ff;
+    border: 3px solid #2d6cdf;
+    margin: 0 auto 15px;
+}
+
+.username{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.user-bio{
+    margin-top: 10px;
+    color: #6b7280;
+    font-size: .95rem;
+}
+
+.post{
+    background: #f8f9fb;
+    border: 1px solid #edf0f3;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+
+.post:last-child{
+    margin-bottom: 0;
+}
+
+.channel{
+    background: #f8f9fb;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.channel:hover{
+    background: #eef3ff;
+}
+
+@media (max-width:1200px){
+
+    .dashboard-layout{
+        grid-template-columns: 250px 1fr;
+    }
+
+    .channels-list{
+        display: none;
+    }
+}
+
+@media (max-width:768px){
+
+    .dashboard-layout{
+        grid-template-columns: 1fr;
+    }
+
+    .profile-option,
+    .channels-list{
+        position: static;
+    }
+}
