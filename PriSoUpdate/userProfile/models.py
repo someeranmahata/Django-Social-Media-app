@@ -8,10 +8,13 @@ class Profile(models.Model):
     )
     profile_pic=models.ImageField(
         upload_to='profile-pic/',
-        default="default.jpg"
+        default="default.jpg" 
     )
     bio=models.TextField(max_length=250)
     created=models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['created']
     def __str__(self):
         return self.user.username
 

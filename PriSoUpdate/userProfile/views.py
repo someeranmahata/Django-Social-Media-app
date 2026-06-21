@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Profile
+from activity.models import Post
 from .form import ProfileUpdateForm,LoginForm,UserRegistrationForm,UserEditForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
@@ -11,10 +12,13 @@ def profile_view(request,username):
     profile=Profile.objects.get(
         user__username=username
     )
+    posts = profile.posts.all()
     return render(
         request,
         'account/profile.html',
-        {'profile':profile}             #CHANGED FROM profile.html->account/login.html
+        {'profile':profile,
+         'posts':posts
+         }             #CHANGED FROM profile.html->account/login.html
     )
 @login_required
 def edit(request):
