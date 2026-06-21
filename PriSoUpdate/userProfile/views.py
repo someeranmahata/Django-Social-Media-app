@@ -13,7 +13,7 @@ def profile_view(request,username):
     )
     return render(
         request,
-        'account/dashboard.html',
+        'account/profile.html',
         {'profile':profile}             #CHANGED FROM profile.html->account/login.html
     )
 @login_required

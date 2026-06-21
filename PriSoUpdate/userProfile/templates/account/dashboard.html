@@ -19,7 +19,7 @@
           {% endif %}
 
             <div class="username">
-                {{profile.user.username}}
+                <a href = "{% url "profile" profile.user.username%}">{{profile.user.username}}</a>
             </div>
 
             <div class="user-bio">
