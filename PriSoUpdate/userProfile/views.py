@@ -77,9 +77,10 @@ def user_login(request):
 @login_required
 def dashboard(request):
     profile = request.user.profile
-    posts=[f"post{i}" for i in range(1, 10)]
+    posts = Post.objects.all()
 
-    channels=[f"channel{i}" for i in range(1, 5)]
+    channels= Profile.objects.all()
+    
     
     return render(
         request,

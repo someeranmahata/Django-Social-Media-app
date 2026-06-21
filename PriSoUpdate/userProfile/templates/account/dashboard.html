@@ -37,10 +37,11 @@
         <div class="section-title">
             Recent Posts
         </div>
-        {% for dat in posts %}
+        {% for post in posts %}
           
         <div class="post">
-            <p>{{dat}}</p>
+            
+            <div class="post-title">{{post.title}}</div>
         </div>
         {% endfor %}
 
