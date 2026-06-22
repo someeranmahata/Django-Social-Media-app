@@ -4,5 +4,5 @@ from .models import Post
 
 admin.site.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title','body', 'created', 'updated']
+    list_display = ['title','body', 'created','image', 'updated']
     search_fields = ['title', 'author']

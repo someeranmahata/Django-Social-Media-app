@@ -140,7 +140,14 @@
     border-radius:12px;
     color:#6b7280;
 } 
-
+.img{
+    padding-bottom: 5px;
+}
+.image{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
 /* ==========================
    MOBILE
 ========================== */

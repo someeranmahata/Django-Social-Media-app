@@ -9,7 +9,7 @@
 </head>
 <body>
   <div id="header">
-    <span class="logo">PriSoUpdates</span>
+    <a href="{% url "dashboard" %}"><span class="logo">PriSoUpdates</span></a>
 
     <span class="user">
       {% if request.user.is_authenticated %}

@@ -1,0 +1,14 @@
+{% extends "activity/base.html" %}
+{% block title %}Add a post{% endblock %}
+{% block content %}
+  {% if post %}
+    <h2>Your post has been added.</h2>
+    <p><a href="{ % url 'dashboard' % }">Back to the dashboard</a></p>
+  {% else %}
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create Post">
+    </form>
+  {% endif %}
+{% endblock %}
