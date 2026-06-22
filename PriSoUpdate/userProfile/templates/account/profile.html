@@ -74,7 +74,13 @@
                             {{ post.created|date:"M d, Y H:i" }}
                         </span>
                     </div>
-
+                    <div class="img">
+                <div class="img-detail">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="" class="image">
+                    {% endif %}
+                </div>
+                </div>
                     <div class="post-content">
                         {{ post.body }}
                     </div>

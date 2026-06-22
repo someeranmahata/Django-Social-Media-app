@@ -14,6 +14,11 @@ class Post(models.Model):
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    
+    image = models.ImageField(upload_to='images/%Y/%m/%d/', blank=True,null=True)
+    class Meta:
+        ordering = ['-created']
+        indexes = [
+            models.Index(fields=['-created']),
+        ]
     def __str__(self):
         return self.title
