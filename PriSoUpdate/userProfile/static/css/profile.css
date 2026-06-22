@@ -62,6 +62,8 @@
    POSTS
 ========================== */
 
+
+
 .posts-section h2{
     margin-bottom:20px;
     color: #2d6cdf;
@@ -103,7 +105,7 @@
     border:1px dashed #d1d5db;
     border-radius:12px;
     color:#6b7280;
-}
+} 
 
 /* ==========================
    MOBILE

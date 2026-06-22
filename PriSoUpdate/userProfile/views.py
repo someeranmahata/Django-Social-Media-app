@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect
-from .models import Profile
+from .models import Profile, Follow
 from activity.models import Post
 from .form import ProfileUpdateForm,LoginForm,UserRegistrationForm,UserEditForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -18,8 +18,43 @@ def profile_view(request,username):
         'account/profile.html',
         {'profile':profile,
          'posts':posts
-         }             #CHANGED FROM profile.html->account/login.html
+         }             
     )
+    
+@login_required
+def unfollow_user(request, username):
+
+    target = get_object_or_404(
+        Profile,
+        user__username=username
+    )
+
+    Follow.objects.filter(
+        follower=request.user.profile,
+        following=target
+    ).delete()
+
+    return redirect('dashboard')
+
+@login_required
+def follow_user(request, username):
+
+    target = get_object_or_404(
+        Profile,
+        user__username=username
+    )
+
+    me = request.user.profile
+
+    if me != target:
+        Follow.objects.get_or_create(
+            follower=me,
+            following=target
+        )
+
+    return redirect('dashboard')
+
+
 @login_required
 def edit(request):
     profile, created = Profile.objects.get_or_create(
@@ -74,23 +109,41 @@ def user_login(request):
         else:
             form = LoginForm()
             return render(request, 'account/login.html', {'form': form})
+
+
 @login_required
 def dashboard(request):
     profile = request.user.profile
     posts = Post.objects.all()
 
-    channels= Profile.objects.all()
-    
-    
+    following = [
+        f.following
+        for f in profile.following.all()
+    ]
+
+    following_ids = set(
+        profile.following.values_list(
+            'following_id',
+            flat=True
+        )
+    )
+
+    for post in posts:
+        post.is_following = post.author.id in following_ids
+
     return render(
         request,
         'account/dashboard.html',
-        {'section': 'dashboard',
-         'profile' : profile,
-         'posts' : posts,
-         'channels': channels
-         }
+        {
+            'section': 'dashboard',
+            'profile': profile,
+            'posts': posts,
+            'following': following,
+            'following_ids' : following_ids,
+        }
     )
+
+
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)

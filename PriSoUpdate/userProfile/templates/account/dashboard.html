@@ -25,6 +25,7 @@
             <div class="user-bio">
                 {{profile.bio}}
             </div>
+            
         </div>
         <div class="profile-edit-option">
           <p>You can <a href="{% url "edit" %}">edit your profile</a> or <a href="{% url "password_change" %}">change your password</a>.</p>
@@ -41,7 +42,44 @@
           
         <div class="post">
             
-            <div class="post-title">{{post.title}}</div>
+            <div class="post-header">
+                <div class="post-image-title">
+                    <div class="post-user-image">
+                    {% if post.author.profile_pic %}
+                        <img src="{{ post.author.profile_pic.url }}" class="avatar2" alt="">
+                    {% else %}
+                    <div class="avatar2"></div>
+                    {% endif %}
+                </div>
+                <div class="post-author">
+                    <a href="{% url "profile" post.author.user.username %}"><strong>{{post.author.user.username}}</strong></a>
+                </div>
+                </div>
+                
+                <div class="post-follow-option">
+
+                    {% if request.user.profile != post.author %}
+
+                        {% if post.author.id in following_ids %}
+                            <a href="{% url 'unfollow' post.author.user.username %}"><i>Unfollow</i></a>
+                        {% else %}
+                            <a href="{% url 'follow' post.author.user.username %}"><i>+ Follow</i></a>
+                        {% endif %}
+                    {% endif %}
+
+                </div>
+
+            </div>
+            <div class="post-detail">
+                <div class="post-detail-header">
+                    <div class="post-title"><h3>{{post.title}}</h3></div>
+                    <div class="post-time"><p><i>{{post.created}}</i></p></div>
+                </div>
+                <div class="post-body">
+                    <p>{{post.body}}</p>
+                </div>
+
+            </div>
         </div>
         {% endfor %}
 
@@ -57,8 +95,21 @@
             Following
         </div>
 
-        {% for channel in channels %}
-        <div class="channel">{{channel}}</div>
+        {% for channel in following %}
+        <div class="channel">
+            <div class="post-image-title">
+                    <div class="post-user-image">
+                    {% if channel.profile_pic %}
+                        <img src="{{ channel.profile_pic.url }}" class="avatar2" alt="">
+                    {% else %}
+                    <div class="avatar2"></div>
+                    {% endif %}
+                </div>
+                <div class="post-author">
+                    <a href="{% url "profile" channel.user.username %}"><strong>{{channel.user.username}}</strong></a>
+                </div>
+                </div>
+        </div>
         {% endfor %}
 
     </div>
