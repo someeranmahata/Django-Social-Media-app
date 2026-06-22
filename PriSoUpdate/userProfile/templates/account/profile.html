@@ -66,15 +66,17 @@
                 <div class="post-card">
 
                     <div class="post-meta">
-                        <strong>
-                            {{ profile.user.username }}
-                        </strong>
+                        
+                        <h3><strong>{{ profile.user.username }}</strong></h3>
 
                         <span>
                             {{ post.created|date:"M d, Y H:i" }}
                         </span>
                     </div>
                     <div class="img">
+                <div class="post-title">
+                    <strong><h3>{{post.title}}</h3></strong>
+                </div>
                 <div class="img-detail">
                     {% if post.image %}
                     <img src="{{ post.image.url }}" alt="" class="image">

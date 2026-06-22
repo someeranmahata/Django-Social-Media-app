@@ -163,6 +163,23 @@
 .post-time{
     font-size: 13px;
 }
+.post-add{
+    margin-top: 5px;
+
+}
+
+.post-add{
+    justify-content: center;
+    background:#f8f9fb;
+    border-radius:12px;
+    padding:12px;
+    transition:.2s;
+}
+
+
+.post-add:hover{
+    background:#eef3ff;
+}
 
 .avatar2{
     width: 30px;
@@ -271,13 +288,21 @@
     border-color: #b8e3c3;
 }
 .image{
-    width: 100%;
+    
     max-width: 500px;
     height: auto;
+    margin-bottom: 6px;
+    padding-bottom: 10px;
+}
+.img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(202, 198, 198) ;
+
 }
 .postadded{
     padding-left: 80px;
 }
-.img{
-    padding-bottom: 5px;
-}
+

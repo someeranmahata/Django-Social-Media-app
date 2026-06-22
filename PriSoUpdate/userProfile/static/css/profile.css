@@ -104,7 +104,7 @@
 }
 
 .post-card{
-    background:white;
+    background:#f8f9fb;
     border:1px solid #e1e4e8;
     border-radius:12px;
     padding:18px;
@@ -129,7 +129,8 @@
 }
 
 .post-content{
-    white-space:pre-wrap;
+    border-top: 1px solid rgb(202, 198, 198) ;
+    padding-top: 16px;
     line-height:1.7;
 }
 
@@ -142,12 +143,23 @@
 } 
 .img{
     padding-bottom: 5px;
+    
 }
 .image{
     width: 100%;
     max-width: 500px;
     height: auto;
 }
+.image-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.post-title{
+
+    border-top: 1px solid rgb(202, 198, 198) ;
+}
+
 /* ==========================
    MOBILE
 ========================== */
