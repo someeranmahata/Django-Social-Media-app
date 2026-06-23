@@ -4,9 +4,24 @@
 <head>
   <title>{% block title %}{% endblock %}</title>
   <link href="{% static "css/base.css" %}" rel="stylesheet">
+  
 {% block extra_css %}
 {% endblock %}
 </head>
+<script>
+function toggleComments(postId) {
+
+    const section = document.getElementById(
+        "comments-" + postId
+    );
+
+    if (section.style.display === "block") {
+        section.style.display = "none";
+    } else {
+        section.style.display = "block";
+    }
+}
+</script>
 <body>
   <div id="header">
     <a href="{% url "dashboard" %}"><span class="logo">PriSoUpdates</span></a>

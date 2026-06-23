@@ -4,6 +4,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 {% endblock %}
 
 {% block content %}
@@ -101,6 +102,53 @@
                 <div class="post-body">
                     <p>{{post.body}}</p>
                 </div>
+                <!-- comment part -->
+                 <div class="post-actions">
+
+    <button class="comment-btn"
+            onclick="toggleComments('{{ post.id }}')">
+
+        <i class="fa-regular fa-comment"></i>
+
+        <span>{{ post.comment.count }}</span>
+
+    </button>
+
+</div>
+
+<div class="post-comment" id="comments-{{ post.id }}">
+
+    {% for com in post.comment.all %}
+
+        <div class="comment-box">
+
+            <div class="comment-avatar">
+                <img src="{{ com.user.profile_pic.url }}" alt="">
+            </div>
+
+            <div class="comment-content">
+
+                <div class="comment-user">
+                    {{ com.user.user.username }}
+                </div>
+
+                <div class="comment-body">
+                    {{ com.body }}
+                </div>
+
+            </div>
+
+        </div>
+
+    {% empty %}
+
+        <div class="no-comment">
+            No comments yet
+        </div>
+
+    {% endfor %}
+
+</div>
 
             </div>
             

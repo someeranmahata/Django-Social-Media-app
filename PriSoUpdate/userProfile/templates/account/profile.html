@@ -74,19 +74,27 @@
                         </span>
                     </div>
                     <div class="img">
-                <div class="post-title">
-                    <strong><h3>{{post.title}}</h3></strong>
-                </div>
-                <div class="img-detail">
-                    {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="" class="image">
-                    {% endif %}
-                </div>
-                </div>
-                    <div class="post-content">
-                        {{ post.body }}
+                    <div class="post-title">
+                        <strong><h3>{{post.title}}</h3></strong>
                     </div>
-
+                    <div class="img-detail">
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}" alt="" class="image">
+                        {% endif %}
+                    </div>
+                    </div>
+                        <div class="post-content">
+                            {{ post.body }}
+                        </div>
+                    <div class="post-comment">
+                    <p>comment sectoin</p>
+                        {% if post.comment %}
+                            {% for com in post.comment.all %}
+                                <p>{{com.body}}</p>
+                                <p>by {{com.user}}</p>
+                            {% endfor %}
+                        {% endif %}
+                </div>
                 </div>
 
             {% endfor %}
