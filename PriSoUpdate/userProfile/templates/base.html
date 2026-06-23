@@ -4,7 +4,7 @@
 <head>
   <title>{% block title %}{% endblock %}</title>
   <link href="{% static "css/base.css" %}" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 {% block extra_css %}
 {% endblock %}
 </head>
@@ -28,7 +28,7 @@ function toggleComments(postId) {
 
     <span class="user">
       {% if request.user.is_authenticated %}
-        Hello {{ request.user.first_name|default:request.user.username }},
+        <strong>{{ request.user.first_name|default:request.user.username }} </strong>
         <form action="{% url "logout" %}" method="post">
           <button type="submit">Logout</button>
           {% csrf_token %}

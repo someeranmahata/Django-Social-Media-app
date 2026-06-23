@@ -86,16 +86,57 @@
                         <div class="post-content">
                             {{ post.body }}
                         </div>
-                    <div class="post-comment">
-                    <p>comment sectoin</p>
-                        {% if post.comment %}
-                            {% for com in post.comment.all %}
-                                <p>{{com.body}}</p>
-                                <p>by {{com.user}}</p>
-                            {% endfor %}
-                        {% endif %}
+                        <div class="post-actions">
+
+    <button class="comment-btn"
+        onclick="toggleComments('{{ post.id }}')">
+
+    <i class="fa-regular fa-comment"></i>
+
+    <span>{{ post.comment.count }}</span>
+
+    </button>
+
+</div>
+
+<div class="post-comment" id="comments-{{ post.id }}">
+
+    {% for com in post.comment.all %}
+
+        <div class="comment-box">
+
+            <div class="comment-avatar">
+                <img src="{{ com.user.profile_pic.url }}" alt="">
+            </div>
+
+            <div class="comment-content">
+
+                <div class="comment-header">
+                    <div class="comment-user">
+                    {{ com.user.user.username }}
+                    </div>
+                    <div class="comment-time">
+                        <i class="text">{{ com.user.created }}</i>
+                    </div>
                 </div>
+
+                <div class="comment-body">
+                    {{ com.body }}
                 </div>
+
+            </div>
+
+        </div>
+
+    {% empty %}
+
+        <div class="no-comment">
+            No comments yet
+        </div>
+
+    {% endfor %}
+
+</div>
 
             {% endfor %}
         {% else %}

@@ -103,6 +103,20 @@
                     <p>{{post.body}}</p>
                 </div>
                 <!-- comment part -->
+                <div class="comment-form">
+                    <form action="{% url 'activity:post_comment' post.id %}" method="post">
+                        {% csrf_token %}
+
+                        <input type="text"
+                            name="body"
+                            placeholder="Write a comment..."
+                            required>
+
+                            <button type="submit">
+                                Comment
+                            </button>
+                        </form>
+                </div>
                  <div class="post-actions">
 
     <button class="comment-btn"
@@ -128,8 +142,13 @@
 
             <div class="comment-content">
 
-                <div class="comment-user">
+                <div class="comment-header">
+                    <div class="comment-user">
                     {{ com.user.user.username }}
+                    </div>
+                    <div class="comment-time">
+                        <i class="text">{{ com.user.created }}</i>
+                    </div>
                 </div>
 
                 <div class="comment-body">

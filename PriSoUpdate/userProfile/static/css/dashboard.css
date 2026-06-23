@@ -258,8 +258,7 @@ comment section */
     background:#eef3ff;
     padding:10px 14px;
     border-radius:16px;
-
-    max-width:80%;
+    min-width: 350px;
 }
 
 .comment-user{
@@ -278,7 +277,57 @@ comment section */
     color:#6b7280;
     padding:10px;
 }
+.comment-header{
+    display: flex;
+    justify-content: space-between;
 
+}
+.text{
+    font-style: italic;
+    font-size: 13px;
+}
+/* Comment Form */
+.comment-form {
+    margin-top: 12px;
+}
+
+.comment-form form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-form input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    background: #f5f6f7;
+    transition: all 0.3s ease;
+}
+
+.comment-form input:focus {
+    border-color: #1877f2;
+    background: #fff;
+}
+
+.comment-form button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    background: #1877f2;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.comment-form button:hover {
+    background: #166fe5;
+}
 /* Right sidebar */
 
 .channels-list{
