@@ -22,3 +22,28 @@ class Post(models.Model):
         ]
     def __str__(self):
         return self.title
+    
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='comment'
+    )
+    user = models.ForeignKey(
+        Profile,
+        on_delete=models.CASCADE,
+        related_name='comment'
+    )
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['-created']
+        indexes = [
+            models.Index(fields=['-created'])
+        ]
+        
+    def __str__(self):
+        return f"commented by {self.user} on {self.created}"
+    
