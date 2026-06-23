@@ -144,7 +144,8 @@
 
                 <div class="comment-header">
                     <div class="comment-user">
-                    {{ com.user.user.username }}
+                  
+                     <a href = "{% url "profile" com.user.user.username%}">{{com.user.user.username}}</a>
                     </div>
                     <div class="comment-time">
                         <i class="text">{{ com.user.created }}</i>
