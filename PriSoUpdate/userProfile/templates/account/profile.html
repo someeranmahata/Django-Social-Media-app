@@ -43,6 +43,23 @@
                 </div>
             </div>  
         </div>
+        <div class="post-follow-option">
+
+            {% if request.user.profile != profile %}
+
+                {% if profile.id in following_ids %}
+                    <a href="{% url 'unfollow' profile.user.username %}">
+                        <i>Unfollow</i>
+                    </a>
+                {% else %}
+                    <a href="{% url 'follow' profile.user.username %}">
+                        <i>+ Follow</i>
+                    </a>
+                {% endif %}
+
+            {% endif %}
+
+        </div>
         <div class="edit-option">
             <a href="{% url "edit" %}"> <i>Edit</i></a>
         </div>

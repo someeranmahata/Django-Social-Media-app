@@ -170,19 +170,26 @@
     margin-top: 5px;
 
 }
-
-.post-add{
+.post-add {
+    display: flex;
     justify-content: center;
-    background:#f8f9fb;
-    border-radius:12px;
-    padding:12px;
-    transition:.2s;
+    margin: 20px 0;
 }
 
-
-.post-add:hover{
-    background:#eef3ff;
+.postadded {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #1877f2;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
 }
+
+.postadded:hover {
+    opacity: 0.99;
+}
+
 
 .avatar2{
     width: 30px;
@@ -439,8 +446,5 @@ comment section */
     padding-bottom: 5px;
     border-bottom: 1px solid rgb(202, 198, 198) ;
 
-}
-.postadded{
-    padding-left: 80px;
 }
 

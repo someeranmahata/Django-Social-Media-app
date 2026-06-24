@@ -9,16 +9,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 def profile_view(request,username):
-    profile=Profile.objects.get(
+    profile = get_object_or_404(
+        Profile,
         user__username=username
     )
     posts = profile.posts.all()
+    following_ids = set(
+        request.user.profile.following.values_list(
+            'following_id',
+            flat=True
+        )
+    )
     return render(
         request,
         'account/profile.html',
         {'profile':profile,
-         'posts':posts
-         }             
+         'posts':posts,
+         'following_ids': following_ids,
+        }             
     )
     
 @login_required
@@ -34,7 +42,7 @@ def unfollow_user(request, username):
         following=target
     ).delete()
 
-    return redirect('dashboard')
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))
 
 @login_required
 def follow_user(request, username):
@@ -52,7 +60,7 @@ def follow_user(request, username):
             following=target
         )
 
-    return redirect('dashboard')
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))
 
 
 @login_required

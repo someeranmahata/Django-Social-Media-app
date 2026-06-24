@@ -7,8 +7,7 @@ urlpatterns=[
     path('', views.dashboard, name='dashboard'),
     path('register/', views.register, name='register'),
     path('edit/', views.edit, name='edit'),
-    path('<str:username>/', views.profile_view, name='profile'),
-    path(
+     path(
         'follow/<str:username>/',
         views.follow_user,
         name='follow'
@@ -19,4 +18,6 @@ urlpatterns=[
         views.unfollow_user,
         name='unfollow'
     ),
+    path('<str:username>/', views.profile_view, name='profile'),
+   
 ]

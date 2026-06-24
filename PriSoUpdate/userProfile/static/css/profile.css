@@ -91,7 +91,47 @@
     font-size:.85rem;
     color:#6b7280;
 }
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
+.profile-avatar {
+    flex: 1;
+}
+
+.post-follow-option,
+.edit-option {
+    margin-top: 20px;
+}
+
+.post-follow-option a,
+.edit-option a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.post-follow-option a {
+    background: #1877f2;
+    color: white;
+}
+
+.edit-option a {
+    background: #e4e6eb;
+    color: #1c1e21;
+}
+
+.post-follow-option a:hover,
+.edit-option a:hover {
+    transform: translateY(-2px);
+}
 /* ==========================
    POSTS
 ========================== */
