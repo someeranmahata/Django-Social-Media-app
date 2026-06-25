@@ -56,13 +56,18 @@
                         <i>+ Follow</i>
                     </a>
                 {% endif %}
-
+            {% else %}
+                    <a href="{% url "edit" %}"> <i>Edit</i></a>
             {% endif %}
 
         </div>
-        <div class="edit-option">
-            <a href="{% url "edit" %}"> <i>Edit</i></a>
-        </div>
+        <!-- <div class="edit-option">
+            
+            {% if request.user.profile == profile %}
+            
+            {% endif %}
+
+        </div> -->
         
     </div>
     <div class="profile-info">
